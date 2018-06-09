@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}
+    CSRF MISSING OR INCORRECT
+{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <p>{{ reason }}</p>
+        <p>Il y a la token dans le code source</p>
+        <form>{% csrf_token %}</form>
+    </div>
+{% endblock content %}

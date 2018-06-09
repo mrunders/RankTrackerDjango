@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    RandTracker
+{% endblock title %}
+
+{% block javascript %}       
+
+{% endblock javascript %}
+
+{% block content %}
+        <div class="container">
+            {% for item in table %}
+                <ul>
+                    <li>{{item.name}}</li>
+                </ul>
+            {% endfor %}
+        </div>
+        <div class="container">
+            <form  action="{{ action }}" method="post">
+                {% csrf_token %}
+                <table class="formulaire">{{ form }}</table>
+                <br>
+                <input type="submit" value="Submit" />
+            </form>
+        </div>
+{% endblock content %}

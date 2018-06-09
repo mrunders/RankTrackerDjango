@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    RandTracker
+{% endblock title %}
+
+{% block javascript %}       
+    <script src="{% static 'js/rankTrackerAddons.js' %}" ></script>
+{% endblock javascript %}
+
+{% block content %}
+<div class="container-fluid"> 
+    <div class="row">
+        <div class='col-md-1'>
+            <ul>
+            {% for item in tabs %}
+                <li style='list-style-type:none;' ><button onclick='switchAcount({{item.id}})'>{{item.name}}</button><p hidden>{{item.id}}</p></li>
+            {% endfor %}
+            </ul>
+        </div>
+        <div class="col-md-7">
+            <table class="container-fluid">
+                <thead><tr><th>Date</th><th>Current Rank</th><th>Variation</th><th>Played On</th><th>With</th></tr></thead>
+                <tbody id='tabletbody'>
+                {% for item in table %}
+                    <tr id='{{item.map.id}}:{{item.herosId}}'>
+                        <td>{{item.date}}</td>
+                        <td>{{item.rank}}</td>
+                        <td>
+                            {% if item.variation < 0 %}
+                            <img src ="{% static 'img/arrow_down.png' %}" alt="">
+                            {% elif item.variation > 0 %}
+                            <img src ="{% static 'img/arrow_up.png' %}" alt="">
+                            {% else %}
+                            <img src ="{% static 'img/arrow_mid.png' %}" alt="">
+                            {% endif %}
+                            {{item.variation}}
+                            
+                        </td>
+                        <td><img src ="{% static 'img/maps/' %}{{item.map}}.png" alt="{{item.map}}"></td>
+                        <td>
+                            {% for hero in item.herosSplit %}
+                            <img style='width:50px;height:50px;' src ="{% static 'img/heros/HeroIcon_' %}{{hero}}.png" alt="{{hero}}">
+                            {% endfor %}
+                        </td>
+                        <td hidden>{{item.tab_id}}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-4">
+            <div class='container-fluid'>
+                <div class='col-md-2'></div>
+                <div class='col-md-8'>
+                    <button onclick="incr(-1)">-1</button>
+                    <button onclick="incr(-5)">-5</button>
+                    <button onclick="incr(-25)">-25</button>
+                    <button onclick="incr(25)">+25</button>
+                    <button onclick="incr(5)">+5</button>
+                    <button onclick="incr(1)">+1</button>
+                </div>
+                <div class='col-md-2'></div>
+            </div>
+            <div>
+                <form  action="{{ action }}" method="post">
+                <fieldset>
+                    {% csrf_token %}
+                    <table class="formulaire">
+                        <tr><td>Rank</td><td>{{ form.rank }}</td></tr>
+                        <tr><td>Played Map: </td><td>{{form.map}}</td></tr>
+                        <tr><td>Played Heros: </td><td>{{form.heros}}</td></tr>
+                        <tr hidden><td>{{form.tab}}</td></tr>
+                    </table>
+                    <br>
+                    <input type="submit" value="Submit" />
+                </fieldset>
+                </form>
+            </div>
+            <hr>
+            <div>
+                <legend>Filter</legend>
+                <table>
+                    <tr>
+                        <td><div id='filter_maps_div'>{{form.map}}</div></td>
+                        <td><button onclick='filter_by_map()'>Apply</button></td>
+                    </tr>
+                    <tr>
+                        <td><div id='filter_heros_div'>{{heroList.heros}}</div></td>
+                        <td><button onclick='filter_by_hero()'>Apply</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
