@@ -14,5 +14,5 @@ urlpatterns = [
     path('tabs/', addTabs),
     path('reset/', reset),
 
-    re_path(r'^api-auth/', include('rest_framework.urls')),
+    re_path(r'^api-auth/', include('rest_framework.urls'))
 ]

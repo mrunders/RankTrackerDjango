@@ -8,7 +8,7 @@ class RankTableForm(forms.ModelForm):
 
     class Meta:
         model = RankTable
-        exclude = ['date','variation']
+        exclude = ['date','variation','tab']
 
     def __init__(self, *args, **kwargs):
         super(RankTableForm, self).__init__(*args, **kwargs)
@@ -28,7 +28,8 @@ class HeroForm(forms.ModelForm):
 
     class Meta:
         model = Hero
-        fields = '__all__'
+        exclude = ['occurence']
+
 
 class TabsForm(forms.ModelForm):
 
@@ -37,6 +38,5 @@ class TabsForm(forms.ModelForm):
         fields = '__all__'
 
 class HeroListForm(forms.Form):
-
+    
     heros = forms.ChoiceField(choices=[(h.id, h.name) for h in Hero.objects.all()])
- 

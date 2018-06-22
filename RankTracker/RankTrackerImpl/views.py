@@ -12,7 +12,6 @@ def index(request):
 
         if form.is_valid():
             obj = form.save(commit=False)
-            print(obj)
             
             try:
                 obj.variation = obj.rank - RankTable.objects.latest('id').rank
@@ -22,6 +21,12 @@ def index(request):
             obj.save()
             obj = RankTable.objects.latest('id')
             obj.heros.set(form.cleaned_data['heros'])
+
+            for hero in form.cleaned_data['heros']:
+                h = Hero.objects.get(name=hero.name)
+                h.occurence = h.occurence + 1
+                h.save()
+
             obj.save()
 
     else:

@@ -4,6 +4,10 @@ from django.utils import timezone
 class Hero(models.Model):
 
     name = models.CharField(verbose_name="Hero name",max_length=50)
+    occurence = models.IntegerField(default=0)
+
+    class Meta:
+        ordering = ('-occurence','id')
 
     def __str__(self):
         return self.name
