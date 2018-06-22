@@ -12,6 +12,7 @@ urlpatterns = [
     path('maps/', addMap),
     path('heros/', addHero),
     path('tabs/', addTabs),
+    path('reset/', reset),
 
     re_path(r'^api-auth/', include('rest_framework.urls')),
 ]

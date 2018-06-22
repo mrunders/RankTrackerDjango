@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from django.conf import settings
+from django.http import HttpResponse
+
 from .forms import *
 from .models import *
 
@@ -56,3 +59,17 @@ def addHero(request):
 
 def addTabs(request):
     return addElemennt(request, Accounts, TabsForm, '/tabs/')
+
+def reset(request):
+
+    for map in settings.MAPS:
+        if not Map.objects.filter(name=map).exists():
+            newmap = Map(name=map)
+            newmap.save()
+
+    for hero in settings.HEROS:
+        if not Hero.objects.filter(name=hero).exists():
+            newhero = Hero(name=hero)
+            newhero.save()
+
+    return HttpResponse('done')

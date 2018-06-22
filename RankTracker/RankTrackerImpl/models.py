@@ -15,6 +15,10 @@ class Map(models.Model):
     def __str__(self):
         return self.name
 
+    def getMapsstr(self):
+        return ",".join([i.name for i in self.name.all()])
+
+
 class Accounts(models.Model):
 
     name = models.CharField(verbose_name='name', max_length=255)
