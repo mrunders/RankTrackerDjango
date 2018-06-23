@@ -34,6 +34,7 @@ HEROS = ['Ana', 'Bastion', 'Doomfist', 'Gengi', 'Mccree', 'Pharah', 'Reaper', 'S
         'JunkRat', 'Mei', 'Torbjörn', 'Widowmaker', 'Dva', 'Orisa', 'Reinhardt', 'Roadhog', 'Winston', 'Zarya', 'Brigitte', 
         'Lucio', 'Mercy', 'Moira', 'Symmetra', 'Zenyatta']
 
+ACCOUNTS = ['Main']
 
 # Application definition
 

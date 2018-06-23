@@ -77,4 +77,9 @@ def reset(request):
             newhero = Hero(name=hero)
             newhero.save()
 
+    for acc in settings.ACCOUNTS:
+        if not Accounts.objects.filter(name=acc).exists():
+            a = Accounts(name=acc)
+            a.save()    
+
     return HttpResponse('done')
