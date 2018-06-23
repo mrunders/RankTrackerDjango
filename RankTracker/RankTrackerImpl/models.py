@@ -7,7 +7,7 @@ class Hero(models.Model):
     occurence = models.IntegerField(default=0)
 
     class Meta:
-        ordering = ('-occurence','id')
+        ordering = ('-occurence','name')
 
     def __str__(self):
         return self.name
@@ -15,6 +15,9 @@ class Hero(models.Model):
 class Map(models.Model):
 
     name = models.CharField(verbose_name="Map name",max_length=50)
+
+    class Meta:
+        ordering = ('name',)
 
     def __str__(self):
         return self.name

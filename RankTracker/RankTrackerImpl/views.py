@@ -76,6 +76,11 @@ def reset(request):
         if not Hero.objects.filter(name=hero).exists():
             newhero = Hero(name=hero)
             newhero.save()
+        else:
+            h = Hero.objects.get(name=hero)
+            h.occurence = 0
+            h.save()
+
 
     for acc in settings.ACCOUNTS:
         if not Accounts.objects.filter(name=acc).exists():
