@@ -5,7 +5,7 @@ th, td {
 }
 
 th, td, dd {
-    padding: 15px;
+    padding: 10px;
     text-align: left;
 }
 
@@ -15,7 +15,7 @@ input, select {
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
-    width: 500px;
+    width: 400px;
 }
 
 button {

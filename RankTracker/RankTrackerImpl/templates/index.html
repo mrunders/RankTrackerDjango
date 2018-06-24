@@ -52,6 +52,7 @@
         </div>
         <div class="col-md-4">
             <div class='container-fluid'>
+                <hr>
                 <div class='col-md-2'></div>
                 <div class='col-md-8'>
                     <button onclick="incr(-1)">-1</button>
@@ -85,10 +86,12 @@
                     <tr>
                         <td><div id='filter_maps_div'>{{form.map}}</div></td>
                         <td><button onclick='filter_by_map()'>Apply</button></td>
+                        <td><button onclick='reset_by_map()'>Reset</button></td>
                     </tr>
                     <tr>
                         <td><div id='filter_heros_div'>{{heroList.heros}}</div></td>
                         <td><button onclick='filter_by_hero()'>Apply</button></td>
+                        <td><button onclick='reset_by_hero()'>Reset</button></td>
                     </tr>
                 </table>
             </div>
