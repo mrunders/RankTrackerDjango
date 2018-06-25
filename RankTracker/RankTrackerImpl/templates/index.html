@@ -15,7 +15,7 @@
         <div class='col-md-1'>
             <ul>
             {% for item in tabs %}
-                <li style='list-style-type:none;' ><button onclick='switchAcount({{item.id}})'>{{item.name}}</button><p hidden>{{item.id}}</p></li>
+                <li style='list-style-type:none;' ><p onclick='switchAcount({{item.id}})'>{{item.name}}</p><p hidden>{{item.id}}</p></li>
             {% endfor %}
             </ul>
         </div>
