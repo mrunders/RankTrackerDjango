@@ -64,7 +64,7 @@
                 </div>
                 <div class='col-md-2'></div>
             </div>
-            <div>
+            <div class='container-fluid'>
                 <form  action="{{ action }}" method="post">
                 <fieldset>
                     {% csrf_token %}
@@ -80,20 +80,26 @@
                 </form>
             </div>
             <hr>
-            <div>
+            <div class='container-fluid'>
                 <legend>Filter</legend>
                 <table>
                     <tr>
                         <td><div id='filter_maps_div'>{{form.map}}</div></td>
                         <td><button onclick='filter_by_map()'>Apply</button></td>
-                        <td><button onclick='reset_by_map()'>Reset</button></td>
                     </tr>
                     <tr>
                         <td><div id='filter_heros_div'>{{heroList.heros}}</div></td>
                         <td><button onclick='filter_by_hero()'>Apply</button></td>
-                        <td><button onclick='reset_by_hero()'>Reset</button></td>
+                    </tr>
+                    <tr>
+                        <td><button onclick='filter_by_all()'>Apply All</button></td>
+                        <td><button onclick='reset()'>Reset</button></td>
                     </tr>
                 </table>
+            </div>
+            <hr>
+            <div class='container-fluid'>
+                {{stats.res}}
             </div>
         </div>
     </div>

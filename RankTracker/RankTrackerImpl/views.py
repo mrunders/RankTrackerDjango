@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.conf import settings
 from django.http import HttpResponse
+from .stats import *
 
 from .forms import *
 from .models import *
@@ -35,10 +36,14 @@ def index(request):
     tabs = Accounts.objects.all()
     table = RankTable.objects.all().order_by('-id')
 
+    stats = Stats(RankTable)
+    stats.evaluate()
+
     return render(request, 'index.html', {
         'tabs':tabs, 'table':table, 
         'form':form, 'action': '/tracker/',
         'heroList': HeroListForm(),
+        'stats': stats
     })
 
 def addElemennt(request, Table, Form, action):
