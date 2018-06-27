@@ -52,54 +52,57 @@
         </div>
         <div class="col-md-4">
             <div class='container-fluid'>
-                <hr>
-                <div class='col-md-2'></div>
-                <div class='col-md-8'>
-                    <button onclick="incr(-1)">-1</button>
-                    <button onclick="incr(-5)">-5</button>
-                    <button onclick="incr(-25)">-25</button>
-                    <button onclick="incr(25)">+25</button>
-                    <button onclick="incr(5)">+5</button>
-                    <button onclick="incr(1)">+1</button>
+                <div class='row'>
+                    <hr>
+                    <div class='col-md-2'></div>
+                    <div class='col-md-8'>
+                        <button onclick="incr(-1)">-1</button>
+                        <button onclick="incr(-5)">-5</button>
+                        <button onclick="incr(-25)">-25</button>
+                        <button onclick="incr(25)">+25</button>
+                        <button onclick="incr(5)">+5</button>
+                        <button onclick="incr(1)">+1</button>
+                    </div>
+                    <div class='col-md-2'></div>
                 </div>
-                <div class='col-md-2'></div>
-            </div>
-            <div class='container-fluid'>
-                <form  action="{{ action }}" method="post">
-                <fieldset>
-                    {% csrf_token %}
-                    <table class="formulaire">
-                        <tr><td>Rank</td><td>{{ form.rank }}</td></tr>
-                        <tr><td>Played Map: </td><td>{{form.map}}</td></tr>
-                        <tr><td>Played Heros: </td><td>{{form.heros}}</td></tr>
-                        <tr hidden><td>{{form.tab}}</td></tr>
+                <div class='row'>
+                    <form  action="{{ action }}" method="post">
+                    <fieldset>
+                        {% csrf_token %}
+                        <table class="formulaire">
+                            <tr><td>Rank</td><td>{{ form.rank }}</td></tr>
+                            <tr><td>Played Map: </td><td>{{form.map}}</td></tr>
+                            <tr><td>Played Heros: </td><td>{{form.heros}}</td></tr>
+                            <tr hidden><td>{{form.tab}}</td></tr>
+                        </table>
+                        <br>
+                        <input type="submit" value="Submit" />
+                    </fieldset>
+                    </form>
+                </div>
+                <hr>
+                <div class='row'>
+                    <legend>Filter</legend>
+                    <table>
+                        <tr>
+                            <td><div id='filter_maps_div'>{{form.map}}</div></td>
+                            <td><button onclick='filter_by_map()'>Apply</button></td>
+                        </tr>
+                        <tr>
+                            <td><div id='filter_heros_div'>{{heroList.heros}}</div></td>
+                            <td><button onclick='filter_by_hero()'>Apply</button></td>
+                        </tr>
+                        <tr>
+                            <td><button onclick='filter_by_all()'>Apply All</button></td>
+                            <td><button onclick='reset()'>Reset</button></td>
+                        </tr>
                     </table>
-                    <br>
-                    <input type="submit" value="Submit" />
-                </fieldset>
-                </form>
-            </div>
-            <hr>
-            <div class='container-fluid'>
-                <legend>Filter</legend>
-                <table>
-                    <tr>
-                        <td><div id='filter_maps_div'>{{form.map}}</div></td>
-                        <td><button onclick='filter_by_map()'>Apply</button></td>
-                    </tr>
-                    <tr>
-                        <td><div id='filter_heros_div'>{{heroList.heros}}</div></td>
-                        <td><button onclick='filter_by_hero()'>Apply</button></td>
-                    </tr>
-                    <tr>
-                        <td><button onclick='filter_by_all()'>Apply All</button></td>
-                        <td><button onclick='reset()'>Reset</button></td>
-                    </tr>
-                </table>
-            </div>
-            <hr>
-            <div class='container-fluid'>
-                {{stats.res}}
+                </div>
+                <hr>
+                <div class='row'>
+                    <legend>Stats</legend>
+                    {{stats|safe}}
+                </div>
             </div>
         </div>
     </div>

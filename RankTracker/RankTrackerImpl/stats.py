@@ -1,5 +1,6 @@
 
 from .models import *
+import math
 
 class Stats:
 
@@ -18,6 +19,7 @@ class Stats:
         self.res['Games Win']  = self.db.objects.filter(variation__gt=0).count()
         self.res['Games Draw'] = self.db.objects.filter(variation=0).count()
         self.res['Total games']= self.db.objects.count()
+        self.res['Winrate']    = '{}%'.format(math.floor((self.res['Games Win'] / self.res['Total games'])* 100))
 
     def __str__(self):
 
