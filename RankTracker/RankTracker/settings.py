@@ -28,11 +28,11 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 MAPS = ['Hanamoura','LunarColony','Anubis','Volskaya','Dorado','JunkerTown','Rialto','Route66','Gibraltar','BlizzardWorld',
-        'Einchenwald','Hollywood','KingsRow','Numbani','Ilios','LijiangTower','Nepal','Oasis']
+        'Einchenwald','Hollywood','KingsRow','Numbani','Ilios','LijiangTower','Nepal','Oasis','no-screen','PLACEMENT']
 
 HEROS = ['Ana', 'Bastion', 'Doomfist', 'Gengi', 'Mccree', 'Pharah', 'Reaper', 'Soldier76', 'Sombra', 'Tracer', 'Hanzo', 
         'JunkRat', 'Mei', 'Torbjörn', 'Widowmaker', 'Dva', 'Orisa', 'Reinhardt', 'Roadhog', 'Winston', 'Zarya', 'Brigitte', 
-        'Lucio', 'Mercy', 'Moira', 'Symmetra', 'Zenyatta']
+        'Lucio', 'Mercy', 'Moira', 'Symmetra', 'Zenyatta','CONNECTION LOSE']
 
 ACCOUNTS = ['Main']
 

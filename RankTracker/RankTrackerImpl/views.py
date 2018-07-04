@@ -83,7 +83,6 @@ def reset(request):
             newhero.save()
         else:
             h = Hero.objects.get(name=hero)
-            h.occurence = 0
             h.save()
 
     for acc in settings.ACCOUNTS:
