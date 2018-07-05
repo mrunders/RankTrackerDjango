@@ -24,7 +24,13 @@ class Stats:
     def __str__(self):
 
         tr = ''
+        row = 0
         for key,item in self.res.items():
             tr += '<th>{}</th><td>{}</td>'.format(key,item)
+            if row == 2:
+                row = 0
+                tr += '</tr><tr>'
+            else:
+                row += 1
 
         return '<table><tr>{}</tr></table>'.format(tr)
