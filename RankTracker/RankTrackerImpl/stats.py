@@ -1,4 +1,5 @@
 
+from django.db.models import Avg, Count, Min, Sum
 from .models import *
 import math
 
@@ -15,11 +16,18 @@ class Stats:
         self.res = {}
 
     def evaluate(self):
-        self.res['Games Lose'] = self.db.objects.filter(variation__lt=0).count()
-        self.res['Games Win']  = self.db.objects.filter(variation__gt=0).count()
+
+        gameswin  = self.db.objects.filter(variation__gt=0)
+        gameslose = self.db.objects.filter(variation__lt=0)
+
+        self.res['Games Lose'] = gameslose.count()
+        self.res['Games Win']  = gameswin.count()
         self.res['Games Draw'] = self.db.objects.filter(variation=0).count()
         self.res['Total games']= self.db.objects.count()
         self.res['Winrate']    = '{}%'.format(math.floor((self.res['Games Win'] / self.res['Total games'])* 100))
+
+        self.res['Avg points losed']   = '% 5.2f' % math.fabs(gameslose.aggregate(Avg('variation'))['variation__avg'])
+        self.res['Avg points winned']   = '% 5.2f' % gameswin.aggregate(Avg('variation'))['variation__avg']
 
     def __str__(self):
 
