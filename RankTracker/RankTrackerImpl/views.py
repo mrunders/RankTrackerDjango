@@ -17,7 +17,7 @@ def index(request):
             try:
                 obj.variation = obj.rank - RankTable.objects.latest('id').rank
             except:
-                obj.variation = obj.rank
+                obj.variation = 0
             
             obj.save()
             obj = RankTable.objects.latest('id')
